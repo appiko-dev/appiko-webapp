@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <style>
+        body{
+            background-image: url("{{url_for('static', filename='images/appiko_new-design.png')}}");
+        }
+    </style>
+
+    <header>
+        <div class="logo-container">
+            <h3>appiko.</h3>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a class="nav-link" href="#">learn</a></li>
+                <li><a class="nav-link" href="#">services</a></li>
+                <li><a class="nav-link" href="#">products</a></li>
+                <li><a class="nav-link" href="#">arcade</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="presentation">
+            <div class="introduction">
+                <div class="intro-text">
+                    <h1>appiko.</h1>
+                    <p>the tech company</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}
