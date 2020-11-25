@@ -8,7 +8,12 @@ app.config["SECRET KEY"] = secrets.token_hex(16)
 
 @app.route("/")
 def home():
-    return render_template("home.html", title="Landing Page")
+    return render_template("home.html", title="Home Page")
+
+
+@app.route("/arcade")
+def about():
+    return render_template("arcade.html", title="Arcade")
 
 
 if __name__ == "__main__":
