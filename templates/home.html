@@ -1,17 +1,32 @@
 {% extends "layout.html" %}
 
-    {% block content %}
-        {% for post in posts %}
-        <article class="media content-section">
-        <div class="media-body">
-            <div class="article-metadata">
-            <a class="mr-2" href="#">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted }}</small>
-        </div>
-        <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content }}</p>
-        </div>
-    </article>
-    {% endfor %}
+    <style>
+      body{
+        background-image: url("{{url_for('static', filename='images/appiko_new-designV6.png')}}");
+      }
+      </style>
+
+{% block content %}
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1></h1>
+    </div>
+    <div class="col-md-4">
+      <div class="content-section">
+        <h3>Our Highlights</h3>
+        <p class='text-muted'>Here, you will find the most recent information regarding the company.
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-light">Latest Projects</li>
+            <li class="list-group-item list-group-item-light">Announcements</li>
+            <li class="list-group-item list-group-item-light">Upcoming Events</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
 
 {% endblock content %}

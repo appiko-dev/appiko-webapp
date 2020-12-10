@@ -1,3 +1,10 @@
+footer {
+  position: fixed;
+  height: 100px;
+  bottom: 0;
+  width: 100%;
+}
+
 body {
   background: #fafafa;
   color: #333333;
@@ -14,7 +21,7 @@ h6 {
 }
 
 .bg-steel {
-  background-color: #5f788a;
+  background-color: #22272b;
 }
 
 .site-header .navbar-nav .nav-link {
