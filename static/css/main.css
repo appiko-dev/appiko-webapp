@@ -1,15 +1,12 @@
-footer {
-  position: fixed;
-  height: 100px;
-  bottom: 0;
-  width: 100%;
-}
-
 body {
-  background: #fafafa;
+  background: #f7f7f7;
   color: #333333;
   margin-top: 5rem;
+  width: 100%;
+  height: 100%;
 }
+
+/* nice blue #475e7c */
 
 h1,
 h2,
@@ -21,7 +18,7 @@ h6 {
 }
 
 .bg-steel {
-  background-color: #22272b;
+  background-color: #22272b; /* github's color #24292e */
 }
 
 .site-header .navbar-nav .nav-link {
