@@ -1,5 +1,5 @@
 body {
-  background: #edeff1;
+  background: #edeff1; /* #1f2021 */
   color: #333333;
   margin-top: 5rem;
   width: 100%;
@@ -18,15 +18,15 @@ h6 {
 }
 
 .bg-steel {
-  background-color: #24292e; /* github's color #24292e */
+  background-color: #1f2021; /* github's color #24292e */
 }
 
 .site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+  color: #ffffff;
 }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #ffffff;
+  color: #b9b9b9;
 }
 
 .site-header .navbar-nav .nav-link.active {
