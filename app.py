@@ -44,6 +44,11 @@ def arcade():
     return render_template("arcade.html", title="arcade")
 
 
+@app.route("/learn")
+def learn():
+    return render_template("learn.html", title="learn")
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     form = RegistrationForm()
@@ -64,7 +69,7 @@ def login():
             flash("You have been logged in!", "success")
             return redirect(url_for("home"))
         else:
-            flash("Login Unsuccessful. Please check username and password", "danger")
+            flash("Login Failed, please check the username and password then try again.", "danger")
             return redirect(url_for("home"))
 
     return render_template("login.html", title="login", form=form)

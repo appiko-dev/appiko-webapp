@@ -6,11 +6,11 @@
       }
       </style>
 
-{% block content %}
+      {% block content %}
 
 <main role="main" class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12" style="padding-bottom: 1%;">
       {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
             {% for category, message in messages %}
@@ -20,17 +20,50 @@
             {% endfor %}
           {% endif %}
         {% endwith %}
-    </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card border-secondary bg-light mb-3" style="padding-top: 1%; padding-bottom: 45%;">
+          <div class="content" style="padding-left: 2%;">
+            <h5 class="card-title"><a href="#" style="text-decoration: none;">test</a></h5>
+            <h6 class="card-subtitle mb-2 text-muted">test</h6>
+          </div>
+          <hr>
+          <div class="container">
+            <div class="card-body">
+              <!-- <p class="card-text">N/A</p> -->
+              <a href="#" class="card-link">N/A</a>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="col-md-4">
-      <div class="content-section">
-        <h3>Our Highlights</h3>
-        <p class='text-muted'>Here, you will find the most recent information regarding the company.
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-light">Latest Projects</li>
-            <li class="list-group-item list-group-item-light">Announcements</li>
-            <li class="list-group-item list-group-item-light">Upcoming Events</li>
-          </ul>
-        </p>
+      <div class="card border-secondary bg-light mb-3" style="padding-top: 1%; padding-bottom: 95%;">
+        <div class="content" style="padding-left: 2%;">
+          <h5 class="card-title"><a href="#" style="text-decoration: none;">test</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">test</h6>
+        </div>
+        <hr>
+        <div class="container">
+          <div class="card-body">
+            <!-- <p class="card-text">N/A</p> -->
+            <a href="#" class="card-link">N/A</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12" style="padding-top: 1%;">
+      <div class="card border-secondary bg-light mb-3" style="padding-top: 1%; padding-bottom: 15%;">
+        <div class="content" style="padding-left: 2%;">
+          <h5 class="card-title"><a href="#" style="text-decoration: none;">test</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">test</h6>
+        </div>
+        <hr>
+        <div class="container">
+          <div class="card-body">
+            <!-- <p class="card-text">N/A</p> -->
+            <a href="#" class="card-link">N/A</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

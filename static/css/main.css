@@ -1,5 +1,5 @@
 body {
-  background: #f7f7f7;
+  background: #edeff1;
   color: #333333;
   margin-top: 5rem;
   width: 100%;
@@ -18,7 +18,7 @@ h6 {
 }
 
 .bg-steel {
-  background-color: #22272b; /* github's color #24292e */
+  background-color: #24292e; /* github's color #24292e */
 }
 
 .site-header .navbar-nav .nav-link {
