@@ -36,6 +36,12 @@ def account():
     return render_template("account.html", title="account")
 
 
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("home"))
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
 
@@ -77,9 +83,3 @@ def login():
             return redirect(url_for("home"))
 
     return render_template("login.html", title="login", form=form)
-
-
-@app.route("/logout")
-def logout():
-    logout_user()
-    return redirect(url_for("home"))
