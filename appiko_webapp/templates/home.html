@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+<style>
+  body {
+    background-image: url("{{url_for('static', filename='images/appiko_new-designV6.png')}}");
+  }
+</style>
+
+{% block content %}
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-12" style="padding-bottom: 1%;">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">
+        {{ message }}
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    </div>
+    <div class="col-md-8">
+      <div class="card border-secondary bg-light mb-3" style="padding-bottom: 45%;">
+        <div class="content" style="padding-left: 2%;">
+          <h5 class="card-title"><a href="#" style="text-decoration: none;">test</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">test</h6>
+        </div>
+        <hr>
+        <div class="container">
+          <div class="card-body">
+            <!-- <p class="card-text">N/A</p> -->
+            <a href="#" class="card-link">N/A</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-secondary bg-light mb-3" style="padding-top: 1%; padding-bottom: 93%;">
+        <div class="content" style="padding-left: 2%;">
+          <h5 class="card-title"><a href="#" style="text-decoration: none;">test</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">test</h6>
+        </div>
+        <hr>
+        <div class="container">
+          <div class="card-body">
+            <!-- <p class="card-text">N/A</p> -->
+            <a href="#" class="card-link">N/A</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12" style="padding-top: 1%;">
+      <div class="card border-secondary bg-light mb-3" style="padding-top: 1%; padding-bottom: 15%;">
+        <div class="content" style="padding-left: 2%;">
+          <h5 class="card-title"><a href="#" style="text-decoration: none;">test</a></h5>
+          <h6 class="card-subtitle mb-2 text-muted">test</h6>
+        </div>
+        <hr>
+        <div class="container">
+          <div class="card-body">
+            <!-- <p class="card-text">N/A</p> -->
+            <a href="#" class="card-link">N/A</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+{% endblock content %}
