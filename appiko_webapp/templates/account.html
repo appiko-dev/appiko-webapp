@@ -2,28 +2,58 @@
 
 {% block content %}
 
-<div class="container"
-    style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2; border-style: solid;">
+<div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h1>Welcome, {{ current_user.username }}</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12" style="padding-top: 5%;">
-            <div class="card border-secondary bg-light mb-3" style="padding-top: 1%; padding-bottom: 1%;">
-                <div class="content" style="padding-left: 2%;">
-                    <h5 class="card-title">Account Information</h5>
-                </div>
+        <div class="col-md-8" style="padding-bottom: 5%;">
+            <div class="container"
+                style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
+                <h3>Welcome, {{ current_user.username }}</h3>
                 <hr>
-                <div class="card-body">
-                    <!-- <p class="card-text">N/A</p> -->
-                    <h5 class="text-muted">{{ current_user.email }} <a href="#" style="padding-left: 65%;">delete
-                            account</a> </h5>
-                </div>
+                <h6>{{ current_user.email }}</h6>
+            </div>
+            <hr>
+            <div class="container"
+                style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
+                <h3>Account Information</h3>
+                <hr <p>It is a long established fact that a reader will be distracted by the readable content of a page
+                when
+                looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                distribution of letters, as opposed to using 'Content here, content here', making it look like
+                readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
+                default model text, and a search for 'lorem ipsum' will uncover many web sites still in their
+                infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose
+                (injected humour and the like).</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="container"
+                style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
+                <h3>Accounts Q/A</h3>
+                <ul>
+                    <li><a href="#">How do I delete my account?</a></li>
+                    <li><a href="#">How do I edit my account details?</a></li>
+                    <li><a href="#">What benefits do accounts provide?</a></li>
+                    <li><a href="#">How many accounts can I have?</a></li>
+                    <li><a href="#">How do I recover a password?</a></li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
+
+<!-- <div class="container"
+    style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2; border-style: solid;">
+    <div class="row">
+        <div class="col-md-6" style="padding-top: 1%;">
+            <h3>Welcome, {{ current_user.username }}</h3>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6" style="padding-bottom: 1%;">
+            <h6>{{ current_user.email }}</h6>
+        </div>
+    </div>
+</div> -->
 
 {% endblock content %}

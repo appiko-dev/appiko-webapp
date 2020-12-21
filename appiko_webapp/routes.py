@@ -1,4 +1,4 @@
-from flask import render_template, url_for, flash, redirect
+from flask import render_template, url_for, flash, redirect, request
 from appiko_webapp import app, db, bcrypt
 from appiko_webapp.forms import RegistrationForm, LoginForm
 from appiko_webapp.models import User
@@ -75,8 +75,9 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
+            next_page = request.args.get("next")
             flash("You have been logged in!", "success")
-            return redirect(url_for("home"))
+            return redirect(next_page) if next_page else redirect(url_for("home"))
         else:
             flash(
                 "Login Failed, please check the email and password then try again.", "danger")

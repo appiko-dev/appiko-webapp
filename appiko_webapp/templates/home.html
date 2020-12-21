@@ -8,7 +8,7 @@
 
 {% block content %}
 
-<main role="main" class="container">
+<div class="container">
   <div class="row">
     <div class="col-md-12" style="padding-bottom: 1%;">
       {% with messages = get_flashed_messages(with_categories=true) %}
@@ -21,53 +21,36 @@
       {% endif %}
       {% endwith %}
     </div>
-    <div class="col-md-8">
-      <div class="card border-secondary bg-light mb-3" style="padding-bottom: 45%;">
-        <div class="content" style="padding-left: 2%;">
-          <h5 class="card-title"><a href="#" style="text-decoration: none;">test</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">test</h6>
-        </div>
+    <div class="col-md-8" style="padding-bottom: 5%;">
+      <div class="container"
+        style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1px;">
+        <h1>Welcome to appiko.</h1>
+        <p>appiko is a cloud computing startup based in Massachusetts</p>
         <hr>
-        <div class="container">
-          <div class="card-body">
-            <!-- <p class="card-text">N/A</p> -->
-            <a href="#" class="card-link">N/A</a>
-          </div>
-        </div>
+        <h4>Your data is protected</h4>
+        <p>Hackers can intercept data. Thats why we take advantage of SSL(Secure Sockets layer) to insure all data
+          passed through our site will be at no risk of interception. Your data is safe here.</p>
+        <hr>
+        <h4>We respect your privacy</h4>
+        <p>Not even us at appiko know your passwords(no duh). We only store your passwords hash using the <a
+            href="https://en.wikipedia.org/wiki/Bcrypt">bcrpyt</a> hashing function. We then later use the passwords
+          hash to authenticate when needed.
+        </p>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="card border-secondary bg-light mb-3" style="padding-top: 1%; padding-bottom: 93%;">
-        <div class="content" style="padding-left: 2%;">
-          <h5 class="card-title"><a href="#" style="text-decoration: none;">test</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">test</h6>
-        </div>
-        <hr>
-        <div class="container">
-          <div class="card-body">
-            <!-- <p class="card-text">N/A</p> -->
-            <a href="#" class="card-link">N/A</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-12" style="padding-top: 1%;">
-      <div class="card border-secondary bg-light mb-3" style="padding-top: 1%; padding-bottom: 15%;">
-        <div class="content" style="padding-left: 2%;">
-          <h5 class="card-title"><a href="#" style="text-decoration: none;">test</a></h5>
-          <h6 class="card-subtitle mb-2 text-muted">test</h6>
-        </div>
-        <hr>
-        <div class="container">
-          <div class="card-body">
-            <!-- <p class="card-text">N/A</p> -->
-            <a href="#" class="card-link">N/A</a>
-          </div>
-        </div>
+      <div class="container"
+        style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
+        <h3>General Q/A</h3>
+        <ul style="padding-left: 10%;">
+          <li><a href="#">Tell me more about the services</a></li>
+          <li><a href="#">Are the services currently available?</a></li>
+          <li><a href="#">Who is the current CEO of appiko?</a></li>
+        </ul>
       </div>
     </div>
   </div>
-</main>
+</div>
 
 
 {% endblock content %}
