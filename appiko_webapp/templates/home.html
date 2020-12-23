@@ -10,7 +10,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12" style="padding-bottom: 1%;">
+    <div class="col-md-12">
       {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
       {% for category, message in messages %}
@@ -21,22 +21,35 @@
       {% endif %}
       {% endwith %}
     </div>
-    <div class="col-md-8" style="padding-bottom: 5%;">
+    <div class="col-md-8">
       <div class="container"
         style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1px;">
         <h1>Welcome to appiko.</h1>
         <p>appiko is a cloud computing startup based in Massachusetts</p>
         <hr>
         <h4>Your data is protected</h4>
-        <p>Hackers can intercept data. Thats why we take advantage of SSL(Secure Sockets layer) to insure all data
+        <p>Hackers can intercept data. Thats why we take advantage of SSL(Secure Sockets Layer) to insure all data
           passed through our site will be at no risk of interception. Your data is safe here.</p>
         <hr>
-        <h4>We respect your privacy</h4>
+        <h4>Your privacy is respected</h4>
         <p>Not even us at appiko know your passwords(no duh). We only store your passwords hash using the <a
             href="https://en.wikipedia.org/wiki/Bcrypt">bcrpyt</a> hashing function. We then later use the passwords
           hash to authenticate when needed.
         </p>
       </div>
+      <hr>
+      <div class="container"
+        style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1px;">
+        <h1>History of appiko.</h1>
+        <ul style="padding-left: 5%;">
+          <li>appiko was established July 30, 2020</li>
+          <li>Domain was live November 19, 2020</li>
+        </ul>
+        <hr>
+        <h4>Let our age be no fear</h4>
+        <p>We work hard on getting our clients trust. It means a lot to us.</p>
+      </div>
+      <hr>
     </div>
     <div class="col-md-4">
       <div class="container"
@@ -48,6 +61,7 @@
           <li><a href="#">Who is the current CEO of appiko?</a></li>
         </ul>
       </div>
+      <hr>
     </div>
   </div>
 </div>
