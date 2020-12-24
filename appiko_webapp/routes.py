@@ -55,6 +55,7 @@ def account():
 def public(account_id):
     account = User.query.get_or_404(account_id)
     account.profile_visits += 1
+    account.account_value += 0.001
     db.session.commit()
     return render_template("public.html", title=account.username, account=account)
 
