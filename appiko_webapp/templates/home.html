@@ -10,7 +10,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
       {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
       {% for category, message in messages %}
@@ -20,11 +20,9 @@
       {% endfor %}
       {% endif %}
       {% endwith %}
-    </div>
-    <div class="col-md-8">
       <div class="container"
         style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1px;">
-        <h1>Welcome to appiko.</h1>
+        <h2>Welcome to appiko.</h2>
         <p>appiko is a cloud computing startup based in Massachusetts</p>
         <hr>
         <h4>Your data is protected</h4>
@@ -40,7 +38,7 @@
       <hr>
       <div class="container"
         style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1px;">
-        <h1>History of appiko.</h1>
+        <h2>History of appiko.</h2>
         <ul style="padding-left: 5%;">
           <li>appiko was established July 30, 2020</li>
           <li>Domain was live November 19, 2020</li>
@@ -49,19 +47,29 @@
         <h4>Let our age be no fear</h4>
         <p>We work hard on getting our clients trust. It means a lot to us.</p>
       </div>
-      <hr>
     </div>
     <div class="col-md-4">
       <div class="container"
         style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
+        <h3>How we handle data</h3>
+        <p>Data will be handled accordingly. For example, your data falls under the category of privacy data. Your data
+          is not
+          shared with 3rd parties, your data will remain in house for research.</p>
+        <hr>
         <h3>General Q/A</h3>
         <ul style="padding-left: 10%;">
           <li><a href="#">Tell me more about the services</a></li>
           <li><a href="#">Are the services currently available?</a></li>
           <li><a href="#">Who is the current CEO of appiko?</a></li>
+          <li><a href="#">Where can I find the contact email?</a></li>
+          <li><a href="#">I would like to learn more about appiko.</a></li>
+          <li><a href="#">What is the purpose for account value?</a></li>
+          <li><a href="#">How do I get myself apart of appiko?</a></li>
+          <li><a href="#">What technologies are currently in use?</a></li>
+          <li><a href="#">Learn more about how we handle data</a></li>
+          <li><a href="#">What are the requirments for an account?</a></li>
         </ul>
       </div>
-      <hr>
     </div>
   </div>
 </div>

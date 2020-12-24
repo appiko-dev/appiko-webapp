@@ -5,46 +5,75 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
             <div class="container"
                 style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
-                <h3>Welcome, <a href="#">{{ current_user.username }}</a></h3>
+                <h2>Welcome, <a href="{{ url_for('public', account_id=current_user.id) }}">{{current_user.username}}</a>
+                </h2>
                 <h6>{{ current_user.email }}</h6>
+                <hr>
+                <div class="col-md-6" style="padding-left: 0;">
+                    <h4>Account Value</h4>
+                    <p><a href="#">History</a>, <a href="#">Information</a></p>
+                    <h4>${{ current_user.account_value}}</h4>
+                </div>
             </div>
             <hr>
             <div class="container"
                 style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
-                <h4>Account Information</h4>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page
-                    when
-                    looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                    distribution of letters, as opposed to using 'Content here, content here', making it look like
-                    readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                    default model text, and a search for 'lorem ipsum' will uncover many web sites still in their
-                    infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose
-                    (injected humour and the like).</p>
+                <h4>Account Analytics</h4>
+                <h6>profile visits: <strong>{{ current_user.profile_visits }}</strong></h6>
             </div>
             <hr>
         </div>
         <div class="col-md-4">
             <div class="container"
                 style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
-                <h4>Account Value</h4>
-                <p><a href="#">History</a>, <a href="#">Information</a></p>
-                <h4>${{ current_user.account_value}}</h4>
+                <h2>Recent Events</h2>
+                <hr>
+                {% for event in events %}
+                <p><a href="#" style="text-decoration: none;">{{event.date.strftime('%Y-%m-%d')}}</a> {{ event.event}}
+                </p>
+                {% endfor %}
             </div>
             <hr>
             <div class="container"
                 style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
-                <h4>Accounts Q/A</h4>
-                <ul style="padding-left: 10%;">
-                    <li><a href="#">How do I delete my account?</a></li>
-                    <li><a href="#">How do I edit my account details?</a></li>
-                    <li><a href="#">What benefits do accounts offer?</a></li>
-                    <li><a href="#">How many accounts can I have?</a></li>
-                    <li><a href="#">How do I recover a password?</a></li>
-                </ul>
+                <form method="POST" , action="">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <div class="form-group" style="font-size: 20px; padding-top: 2%;">
+                            Change {{ form.username.label(class="form-control-label") }}
+
+                            {% if form.username.errors %}
+                            {{ form.username(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ form.username(class="form-control form-control-md") }}
+                            {% endif%}
+
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-primary") }}
+                    </div>
+                </form>
             </div>
-            <hr>
+
+
         </div>
     </div>
 </div>
