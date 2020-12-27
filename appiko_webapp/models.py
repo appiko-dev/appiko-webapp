@@ -1,6 +1,7 @@
 from datetime import datetime
 from itsdangerous import TimedJSONWebSignatureSerializer as serializer
-from appiko_webapp import db, login_manager, app
+from flask import current_app
+from appiko_webapp import db, login_manager
 from flask_login import UserMixin
 # usermixin deals with authentication login manager expects
 
@@ -23,12 +24,12 @@ class User(db.Model, UserMixin):
     posts = db.relationship("Post", backref="account", lazy=True)
 
     def get_reset_token(self, expires_sec=1800):
-        s = serializer(app.secret_key, expires_sec)
+        s = serializer(current_app.secret_key, expires_sec)
         return s.dumps({"user_id": self.id}).decode("utf-8")
 
     @staticmethod
     def verify_reset_token(token):
-        s = serializer(app.secret_key)
+        s = serializer(current_app.secret_key)
         try:
             user_id = s.loads(token)["user_id"]
         except:

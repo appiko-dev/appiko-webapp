@@ -3,26 +3,35 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
-import secrets
+from appiko_webapp.config import Config
 
-app = Flask(__name__, static_url_path="/static")
+mail = Mail()
+db = SQLAlchemy()
+bcrypt = Bcrypt()
+login_manager = LoginManager()
 
-app.config["SECRET_KEY"] = "491b8c0c72d4fdac6a8a2f3509dc414b"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
-
-app.config["MAIL_SERVER"] = "smtp.googlemail.com"
-app.config["MAIL_PORT"] = 587
-app.config["MAIL_USE_TLS"] = True
-app.config["MAIL_USERNAME"] = "rstpswrd@gmail.com"
-app.config["MAIL_PASSWORD"] = "939c860084a2c8de"
-
-mail = Mail(app)
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-
-login_manager = LoginManager(app)
-
-from appiko_webapp import routes
-
-login_manager.login_view = "home"
+login_manager.login_view = "users.login"  # where to redirect
 login_manager.login_message_category = "info"
+
+
+def create_app(config_class=Config):
+
+    app = Flask(__name__, static_url_path="/static")
+    app.config.from_object(Config)
+
+    mail.init_app(app)
+    db.init_app(app)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+
+    from appiko_webapp.users.routes import users
+    from appiko_webapp.posts.routes import posts
+    from appiko_webapp.main.routes import main
+    from appiko_webapp.errors.handlers import errors
+
+    app.register_blueprint(users)
+    app.register_blueprint(posts)
+    app.register_blueprint(main)
+    app.register_blueprint(errors)
+
+    return app
