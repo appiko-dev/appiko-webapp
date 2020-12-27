@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="container"
+                style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
+                <h4>{{ article.title }}</h4>
+                <p>{{ article.content }}</p>
+            </div>
+            <hr>
+            {% if article.account == current_user %}
+            <div>
+                <a class="btn btn-secondary btn-sm m-1"
+                    href="{{ url_for('update_article', article_id=article.id) }}">Update</a>
+                <a class="btn btn-danger btn-sm m-1"
+                    href="{{ url_for('delete_article', article_id=article.id) }}">Delete</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

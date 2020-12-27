@@ -6,8 +6,13 @@
         <div class="col-md-12">
             <div class="container"
                 style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
-                <h2><a href="#">{{ account.username }}</a> <strong> #{{account.id}}</strong></h2>
+                <h2>{{ account.username }} #{{account.id}}</h2>
                 <hr>
+                {% for post in posts %}
+                <h6><a href="{{ url_for('article', article_id=post.id) }}" style="text-decoration: none;">{{ post.title
+                        }}</a></h6>
+                <p>{{ post.content }}</p>
+                {% endfor %}
             </div>
         </div>
     </div>

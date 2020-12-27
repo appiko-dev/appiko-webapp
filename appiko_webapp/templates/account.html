@@ -14,24 +14,52 @@
             {% endfor %}
             {% endif %}
             {% endwith %}
-
             <div class="container"
                 style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
-                <h2>Welcome, <a href="{{ url_for('public', account_id=current_user.id) }}">{{current_user.username}}</a>
+                <h2>Welcome, <a href="{{ url_for('public', username=current_user.username) }}"
+                        style="text-decoration: none;">{{current_user.username}}</a>
                 </h2>
                 <h6>{{ current_user.email }}</h6>
                 <hr>
                 <div class="col-md-6" style="padding-left: 0;">
                     <h4>Account Value</h4>
                     <p><a href="#">History</a>, <a href="#">Information</a></p>
-                    <h4>${{ current_user.account_value}}</h4>
+                    <h4>${{ "%0.2f" % (current_user.account_value) }}</h4>
                 </div>
             </div>
             <hr>
             <div class="container"
                 style="background-color: #fff; border: rgb(218 218 218); border-width: 1px; border-radius: 2px; border-style: solid; padding-top: 1%; padding-bottom: 1%;">
-                <h4>Account Analytics</h4>
-                <h6>profile visits: <strong>{{ current_user.profile_visits }}</strong></h6>
+                <h4>Your Articles ({{ posts.total }})<a href="{{ url_for('new_article') }}"
+                        style="padding-left: 2%; font-size: 15px; text-decoration: none;">Create</a></h4>
+                <hr>
+
+                {% for post in posts.items %}
+                <h6><a href="{{ url_for('article', article_id=post.id) }}" style="text-decoration: none;">{{
+                        post.title}}</a></h6>
+                <p>{{ post.content }}</p>
+                {% endfor %}
+
+                <hr>
+
+                {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                {% if page_num %}
+                {% if posts.page == page_num %}
+                <a class="btn btn-primary mb-4" style="font-size: 12px;"
+                    href="{{ url_for('account', page=page_num) }}">{{ page_num }}</a>
+                {% else %}
+                <a class="btn btn-outline-primary mb-4" style="font-size: 12px;"
+                    href="{{ url_for('account', page=page_num) }}">{{ page_num }}</a>
+                {% endif %}
+                {% else %}
+                ...
+                {% endif %}
+                {% endfor %}
+
+
+                <!-- <h4>Account Analytics</h4>
+                    <h6>profile visits: <strong>{{ current_user.profile_visits }}</strong></h6>
+                 -->
             </div>
             <hr>
         </div>
@@ -53,9 +81,8 @@
                     <fieldset class="form-group">
                         <div class="form-group" style="font-size: 20px; padding-top: 2%;">
                             Change {{ form.username.label(class="form-control-label") }}
-
                             {% if form.username.errors %}
-                            {{ form.username(class="form-control form-control-lg is-invalid") }}
+                            {{ form.username(class="form-control form-control-md is-invalid") }}
                             <div class="invalid-feedback">
                                 {% for error in form.username.errors %}
                                 <span>{{ error }}</span>
@@ -64,7 +91,6 @@
                             {% else %}
                             {{ form.username(class="form-control form-control-md") }}
                             {% endif%}
-
                         </div>
                     </fieldset>
                     <div class="form-group">
@@ -72,8 +98,6 @@
                     </div>
                 </form>
             </div>
-
-
         </div>
     </div>
 </div>

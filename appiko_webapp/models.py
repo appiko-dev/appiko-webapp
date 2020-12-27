@@ -1,5 +1,6 @@
 from datetime import datetime
-from appiko_webapp import db, login_manager
+from itsdangerous import TimedJSONWebSignatureSerializer as serializer
+from appiko_webapp import db, login_manager, app
 from flask_login import UserMixin
 # usermixin deals with authentication login manager expects
 
@@ -19,9 +20,24 @@ class User(db.Model, UserMixin):
     account_value = db.Column(db.Float, unique=False, nullable=False)
     profile_visits = db.Column(db.Integer, unique=False, nullable=False)
     events = db.relationship("AccountEvents", backref="account", lazy=True)
+    posts = db.relationship("Post", backref="account", lazy=True)
+
+    def get_reset_token(self, expires_sec=1800):
+        s = serializer(app.secret_key, expires_sec)
+        return s.dumps({"user_id": self.id}).decode("utf-8")
+
+    @staticmethod
+    def verify_reset_token(token):
+        s = serializer(app.secret_key)
+        try:
+            user_id = s.loads(token)["user_id"]
+        except:
+            return None
+
+        return User.query.get(user_id)
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+        return f"User('{self.username}', '{self.email}', '{self.account_value}')"
 
 
 class AccountEvents(db.Model):
@@ -31,4 +47,16 @@ class AccountEvents(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
     def __repr__(self):
-        return f"UserEvents('{self.event}', {self.date}, '{self.user_id}')"
+        return f"AccountEvents('{self.event}', {self.date}, '{self.user_id}')"
+
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(50), nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False,
+                            default=datetime.utcnow)
+    content = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+    def __repr__(self):
+        return f"Post('{self.title}', '{self.date_posted}')"
